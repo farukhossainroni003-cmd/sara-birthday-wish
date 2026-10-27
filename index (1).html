@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <title>Happy Download Day 😁💐</title>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: rgba(24, 21, 15, .92);
+      --gold: #f5ce68;
+      --gold-bright: #ffe8a3;
+      --text: #fff8e8;
+      --muted: #d4c7a7;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at top, rgba(143, 103, 25, .20), transparent 55%),
+        linear-gradient(160deg, #090909, #17130a 55%, #050505);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans Bengali", "Hind Siliguri", sans-serif;
+      display: grid;
+      place-items: center;
+      padding: 24px 14px 40px;
+    }
+    .glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background: radial-gradient(circle at 50% 42%, rgba(245, 206, 104, .08), transparent 48%);
+    }
+    .card {
+      position: relative; z-index: 1;
+      width: min(100%, 680px);
+      padding: clamp(24px, 6vw, 48px) clamp(18px, 5vw, 42px);
+      border: 1px solid rgba(245, 206, 104, .62);
+      border-radius: 26px;
+      background: var(--panel);
+      box-shadow: 0 0 35px rgba(245, 206, 104, .13), inset 0 0 24px rgba(245, 206, 104, .035);
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+    .ornament { color: var(--gold); font-size: clamp(1.7rem, 7vw, 2.8rem); letter-spacing: .18em; }
+    h1 {
+      margin: 16px 0 12px;
+      color: var(--gold-bright);
+      font-size: clamp(1.8rem, 7vw, 3.1rem);
+      line-height: 1.25;
+      text-shadow: 0 0 20px rgba(245, 206, 104, .28);
+      overflow-wrap: anywhere;
+    }
+    .intro { font-size: clamp(1.05rem, 4vw, 1.3rem); color: var(--muted); line-height: 1.8; }
+    .divider { height: 1px; margin: 24px auto; width: min(100%, 360px); background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .surprise-btn {
+      appearance: none; border: 0; border-radius: 999px; cursor: pointer;
+      padding: 14px 24px; min-height: 48px;
+      color: #171006; font-weight: 800; font-size: 1rem;
+      background: linear-gradient(135deg, #fff0b5, #d8a936);
+      box-shadow: 0 6px 24px rgba(245, 206, 104, .22);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .surprise-btn:hover { transform: translateY(-2px); box-shadow: 0 9px 28px rgba(245, 206, 104, .32); }
+    .surprise-btn:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+    #wish {
+      display: none; margin-top: 26px; padding: 22px 18px;
+      border: 1px solid rgba(245, 206, 104, .42); border-radius: 18px;
+      background: rgba(0, 0, 0, .35); animation: reveal .7s ease both;
+    }
+    #wish.visible { display: block; }
+    .wish-text { font-size: clamp(1.08rem, 4.2vw, 1.35rem); line-height: 2; white-space: pre-line; overflow-wrap: anywhere; }
+    .signature { margin-top: 18px; color: var(--gold-bright); font-weight: 700; line-height: 1.7; }
+    .footer { margin-top: 26px; color: #aa9b78; font-size: .82rem; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .particle {
+      position: fixed; z-index: 5; top: -40px; left: 0; pointer-events: none;
+      animation: fall linear forwards; will-change: transform, opacity;
+      user-select: none;
+    }
+    @keyframes fall { to { transform: translate3d(var(--drift), 110vh, 0) rotate(720deg); opacity: .1; } }
+    .firework {
+      position: fixed; z-index: 4; width: 5px; height: 5px; border-radius: 50%;
+      pointer-events: none; box-shadow: 0 0 12px 3px var(--gold);
+      animation: burst 900ms ease-out forwards;
+    }
+    @keyframes burst {
+      from { transform: translate(0, 0) scale(.3); opacity: 1; }
+      to { transform: translate(var(--x), var(--y)) scale(1.15); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <main class="card">
+    <div class="ornament" aria-hidden="true">✦ ✧ ✦</div>
+    <h1>Happy Download Day 😁💐</h1>
+    <p class="intro">Happy birthday day to you 🎁</p>
+    <div class="divider" aria-hidden="true"></div>
+    <button class="surprise-btn" id="revealButton" type="button" aria-controls="wish" aria-expanded="false">
+      তোমার সারপ্রাইজ খুলে দেখো ✨
+    </button>
+    <section id="wish" aria-live="polite">
+      <div class="wish-text">জন্মদিনের শুভেচ্ছা নিও , ভালো থাকো ,সুখে থাকো , ভন্ডামো বাদ । তোমার জন্য দোয়া ও ভালোবাসা সবসময়।</div>
+      <div class="signature">Faruk Hossain Roni</div>
+    </section>
+    <div class="footer">একটু হাসো, দিনটা সুন্দর কাটুক ✨</div>
+  </main>
+  <script>
+    (() => {
+      const button = document.getElementById('revealButton');
+      const wish = document.getElementById('wish');
+      let celebrationStarted = false;
+
+      function makeFallingParticles() {
+        const symbols = ['💛', '💖', '✨', '🌸', '💐', '🎉', '✦'];
+        for (let i = 0; i < 48; i++) {
+          const particle = document.createElement('span');
+          particle.className = 'particle';
+          particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+          particle.style.left = Math.random() * 100 + 'vw';
+          particle.style.fontSize = (14 + Math.random() * 20) + 'px';
+          particle.style.animationDuration = (3.2 + Math.random() * 4.2) + 's';
+          particle.style.animationDelay = (Math.random() * 1.8) + 's';
+          particle.style.setProperty('--drift', (Math.random() * 180 - 90) + 'px');
+          document.body.appendChild(particle);
+          particle.addEventListener('animationend', () => particle.remove(), { once: true });
+        }
+      }
+
+      function launchFireworks() {
+        const colors = ['#ffe8a3', '#f5ce68', '#fff7d1', '#d8a936', '#f5a6c8'];
+        for (let burst = 0; burst < 5; burst++) {
+          window.setTimeout(() => {
+            const x = 12 + Math.random() * 76;
+            const y = 18 + Math.random() * 48;
+            for (let i = 0; i < 22; i++) {
+              const spark = document.createElement('span');
+              spark.className = 'firework';
+              spark.style.left = x + 'vw';
+              spark.style.top = y + 'vh';
+              spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+              const angle = (Math.PI * 2 * i) / 22;
+              const distance = 35 + Math.random() * 75;
+              spark.style.setProperty('--x', Math.cos(angle) * distance + 'px');
+              spark.style.setProperty('--y', Math.sin(angle) * distance + 'px');
+              document.body.appendChild(spark);
+              spark.addEventListener('animationend', () => spark.remove(), { once: true });
+            }
+          }, burst * 280);
+        }
+      }
+
+      function floatHearts() {
+        const hearts = ['💖', '💕', '💛', '❤️'];
+        for (let i = 0; i < 16; i++) {
+          window.setTimeout(() => {
+            const heart = document.createElement('span');
+            heart.className = 'particle';
+            heart.textContent = hearts[i % hearts.length];
+            heart.style.left = (Math.random() * 90 + 5) + 'vw';
+            heart.style.top = (65 + Math.random() * 25) + 'vh';
+            heart.style.fontSize = (18 + Math.random() * 18) + 'px';
+            heart.style.animationDuration = (2.4 + Math.random() * 2.2) + 's';
+            heart.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
+            document.body.appendChild(heart);
+            heart.addEventListener('animationend', () => heart.remove(), { once: true });
+          }, i * 90);
+        }
+      }
+
+      button.addEventListener('click', () => {
+        wish.classList.add('visible');
+        button.setAttribute('aria-expanded', 'true');
+        button.textContent = 'সারপ্রাইজ খুলে গেছে 💛';
+        if (!celebrationStarted) {
+          celebrationStarted = true;
+          floatHearts();
+          makeFallingParticles();
+          launchFireworks();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
